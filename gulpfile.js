@@ -4,6 +4,9 @@ var gulp = require("gulp"),
 
 gulp.task("default", function() {
     return gulp.src("src/app.js")
+        .on('error',function(){
+          console.log('err');
+        })
         .pipe(to5({
         	includeRuntime: true
         }))
@@ -17,8 +20,5 @@ gulp.task('watch', function() {
 	// 	host: 'localhost',
 	// 	basePath: './'
 	// })
-  gulp.watch(['src/**/*.js'], ['default'])
-  	.on('error',function(){
-  		console.log('err');
-  	});
+  gulp.watch(['src/**/*.js'], ['default']);
 });
